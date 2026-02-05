@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muebles Bravo - Muebles a Medida en Colbún | Cocinas, Closets y Más</title>
+    <meta name="description" content="Fabricación y venta de muebles en melamina a medida en Colbún, Región del Maule. Cocinas, closets, vanitorios y muebles personalizados.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #8b7355;
+            --color-accent: #d4a574;
+            --color-light: #f8f9fa;
+            --color-white: #ffffff;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: var(--color-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-primary);
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L100 100M100 0L0 100" stroke="rgba(255,255,255,0.03)" stroke-width="2"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        /* Hero Gallery */
+        .hero-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-gallery-item {
+            height: 200px;
+            background: var(--color-light);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .hero-gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(0,0,0,0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+        }
+
+        /* Muebles Destacados */
+        .muebles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .mueble-card {
+            background: var(--color-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .mueble-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mueble-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #d4a574 0%, #8b7355 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .mueble-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .mueble-content {
+            padding: 1.5rem;
+        }
+
+        .mueble-content h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .mueble-content p {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .mueble-specs {
+            background: var(--color-light);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        /* Servicios */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .servicio-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .servicio-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .servicio-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .servicio-card p {
+            color: var(--color-text-light);
+        }
+
+        /* Galería */
+        #galeria {
+            background: var(--color-light);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--color-white);
+            border: 2px solid var(--color-secondary);
+            border-radius: 25px;
+            color: var(--color-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background: var(--color-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8d5c4 0%, #d4a574 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-weight: 600;
+        }
+
+        /* Por qué elegirnos */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--color-text-light);
+        }
+
+        /* Contacto */
+        #contacto {
+            background: var(--color-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--color-light);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--color-secondary);
+        }
+
+        .contact-item a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--color-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .map-container {
+            grid-column: 1 / -1;
+            height: 400px;
+            background: var(--color-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+        }
+
+        /* CTA Final */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Agenda Digital */
+        .agenda-section {
+            background: var(--color-white);
+            padding: 4rem 2rem;
+        }
+
+        .agenda-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .calendario {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .dia-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .dia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-light);
+        }
+
+        .dia-fecha {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .dia-disponible {
+            background: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .dia-completo {
+            background: #f44336;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .horarios-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .horario-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            background: var(--color-light);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .horario-item.disponible {
+            cursor: pointer;
+        }
+
+        .horario-item.disponible:hover {
+            background: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .horario-item.ocupado {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .horario-hora {
+            font-weight: 600;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .horario-estado {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        .horario-estado.disponible {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .horario-estado.ocupado {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .agenda-info {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .agenda-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .agenda-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .agenda-info li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .agenda-info li::before {
+            content: "✓";
+            color: var(--color-secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Modal para agendar */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--color-primary);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-info {
+            background: var(--color-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-info p {
+            margin: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .agenda-cupos {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--color-light);
+            border-radius: 8px;
+        }
+
+        .cupos-numero {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-secondary);
+        }
+
+        .cupos-texto {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                Muebles <span>Bravo</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#muebles">Muebles</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#agenda">Agendar Visita</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Diseñamos y Fabricamos Muebles a Medida para tu Hogar</h1>
+            <p>Cocinas, closets, vanitorios y muebles personalizados en melamina de alta calidad</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">Cotiza tu Proyecto</a>
+                <a href="#galeria" class="btn btn-secondary">Ver Trabajos Realizados</a>
+            </div>
+            <div class="hero-gallery">
+                <div class="hero-gallery-item">
+                    <div class="gallery-placeholder">🏠</div>
+                </div>
+                <div class="hero-gallery-item">
+                    <div class="gallery-placeholder">🪑</div>
+                </div>
+                <div class="hero-gallery-item">
+                    <div class="gallery-placeholder">🚪</div>
+                </div>
+                <div class="hero-gallery-item">
+                    <div class="gallery-placeholder">🔨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muebles Destacados -->
+    <section id="muebles">
+        <div class="section-header">
+            <h2>Muebles Destacados</h2>
+            <p>Conoce nuestros diseños más populares y solicita el tuyo personalizado</p>
+        </div>
+        <div class="muebles-grid">
+            <div class="mueble-card">
+                <div class="mueble-image">
+                    <span class="mueble-badge">Más Solicitado</span>
+                    🏠
+                </div>
+                <div class="mueble-content">
+                    <h3>Cocina en L con Horno Empotrado</h3>
+                    <p>Diseño moderno y funcional con espacio optimizado. Incluye cubiertas, lavaplatos y área de cocción.</p>
+                    <div class="mueble-specs">
+                        📏 Medidas aproximadas: 3.0m x 2.5m<br>
+                        🎨 Melamina de alta calidad<br>
+                        ⚙️ Herrajes premium
+                    </div>
+                    <a href="#contacto" class="btn btn-primary">Cotizar este Modelo</a>
+                </div>
+            </div>
+
+            <div class="mueble-card">
+                <div class="mueble-image">
+                    🚪
+                </div>
+                <div class="mueble-content">
+                    <h3>Closet y Ropero a Medida</h3>
+                    <p>Maximiza tu espacio con diseños personalizados. Incluye cajones, repisas y barra para colgar.</p>
+                    <div class="mueble-specs">
+                        📏 Medidas según tu espacio<br>
+                        🎨 Diversos acabados disponibles<br>
+                        🔧 Instalación incluida
+                    </div>
+                    <a href="#contacto" class="btn btn-primary">Cotizar este Modelo</a>
+                </div>
+            </div>
+
+            <div class="mueble-card">
+                <div class="mueble-image">
+                    🚿
+                </div>
+                <div class="mueble-content">
+                    <h3>Vanitorio Moderno</h3>
+                    <p>Elegancia y funcionalidad para tu baño. Diseños resistentes a la humedad con acabados impecables.</p>
+                    <div class="mueble-specs">
+                        📏 Diversos tamaños disponibles<br>
+                        💧 Materiales resistentes<br>
+                        ✨ Acabado profesional
+                    </div>
+                    <a href="#contacto" class="btn btn-primary">Cotizar este Modelo</a>
+                </div>
+            </div>
+
+            <div class="mueble-card">
+                <div class="mueble-image">
+                    <span class="mueble-badge">Popular</span>
+                    🍽️
+                </div>
+                <div class="mueble-content">
+                    <h3>Cocina en U Completa</h3>
+                    <p>Máxima capacidad de almacenamiento y área de trabajo. Perfecta para espacios amplios.</p>
+                    <div class="mueble-specs">
+                        📏 Configuración personalizada<br>
+                        🎨 Múltiples combinaciones<br>
+                        🔝 Calidad garantizada
+                    </div>
+                    <a href="#contacto" class="btn btn-primary">Cotizar este Modelo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+        <div class="section-header">
+            <h2>Nuestros Servicios</h2>
+            <p>Soluciones completas para cada rincón de tu hogar</p>
+        </div>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-icon">🏠</div>
+                <h3>Cocinas a Medida</h3>
+                <p>Diseños funcionales y modernos adaptados a tu espacio y necesidades</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🚪</div>
+                <h3>Closets y Roperos</h3>
+                <p>Optimización de espacios con soluciones de almacenamiento inteligentes</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🚿</div>
+                <h3>Vanitorios</h3>
+                <p>Muebles elegantes y resistentes para tu baño</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🪑</div>
+                <h3>Muebles Personalizados</h3>
+                <p>Cualquier mueble que imagines, lo fabricamos a tu medida</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">🔨</div>
+                <h3>Fabricación Propia</h3>
+                <p>Control total de calidad en cada etapa de producción</p>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">💡</div>
+                <h3>Asesoría Profesional</h3>
+                <p>Te guiamos en cada paso, desde el diseño hasta la instalación</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria">
+        <div class="section-header">
+            <h2>Galería de Trabajos</h2>
+            <p>Proyectos reales realizados para nuestros clientes</p>
+        </div>
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="cocinas">Cocinas</button>
+            <button class="filter-btn" data-filter="closets">Closets</button>
+            <button class="filter-btn" data-filter="vanitorios">Vanitorios</button>
+            <button class="filter-btn" data-filter="otros">Otros</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="cocinas">
+                <div class="gallery-item-placeholder">🏠</div>
+                <div class="gallery-item-label">Cocina en L Moderna</div>
+            </div>
+            <div class="gallery-item" data-category="cocinas">
+                <div class="gallery-item-placeholder">🍽️</div>
+                <div class="gallery-item-label">Cocina con Isla Central</div>
+            </div>
+            <div class="gallery-item" data-category="closets">
+                <div class="gallery-item-placeholder">🚪</div>
+                <div class="gallery-item-label">Closet Espacioso</div>
+            </div>
+            <div class="gallery-item" data-category="vanitorios">
+                <div class="gallery-item-placeholder">🚿</div>
+                <div class="gallery-item-label">Vanitorio Doble</div>
+            </div>
+            <div class="gallery-item" data-category="cocinas">
+                <div class="gallery-item-placeholder">🔥</div>
+                <div class="gallery-item-label">Cocina con Horno Empotrado</div>
+            </div>
+            <div class="gallery-item" data-category="otros">
+                <div class="gallery-item-placeholder">📚</div>
+                <div class="gallery-item-label">Biblioteca Personalizada</div>
+            </div>
+            <div class="gallery-item" data-category="closets">
+                <div class="gallery-item-placeholder">👔</div>
+                <div class="gallery-item-label">Walk-in Closet</div>
+            </div>
+            <div class="gallery-item" data-category="cocinas">
+                <div class="gallery-item-placeholder">🏠</div>
+                <div class="gallery-item-label">Cocina en U Completa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué Elegirnos -->
+    <section id="por-que">
+        <div class="section-header">
+            <h2>¿Por Qué Elegir Muebles Bravo?</h2>
+            <p>Compromiso con la calidad y satisfacción de nuestros clientes</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔨</div>
+                <h3>Fabricación Propia</h3>
+                <p>Controlamos cada detalle del proceso productivo para garantizar máxima calidad</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Materiales de Calidad</h3>
+                <p>Trabajamos con melamina premium y herrajes de primera línea</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Experiencia Comprobable</h3>
+                <p>Años de trayectoria respaldados por cientos de clientes satisfechos</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>Trabajos Reales</h3>
+                <p>Todas nuestras fotos son de proyectos realmente ejecutados</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Atención Personalizada</h3>
+                <p>Te acompañamos desde el diseño hasta la instalación final</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Garantía de Satisfacción</h3>
+                <p>Compromiso total con la calidad y durabilidad de nuestros muebles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agenda Digital -->
+    <section id="agenda" class="agenda-section">
+        <div class="section-header">
+            <h2>Agenda tu Visita a Terreno</h2>
+            <p>Visitamos tu hogar los sábados para tomar medidas y asesorarte personalmente</p>
+        </div>
+        
+        <div class="agenda-container">
+            <div class="agenda-info">
+                <h3>📅 ¿Cómo funciona?</h3>
+                <ul>
+                    <li>Selecciona el sábado que más te acomode</li>
+                    <li>Elige tu horario preferido</li>
+                    <li>Visitaremos tu hogar para tomar medidas exactas</li>
+                    <li>Te entregaremos una cotización detallada</li>
+                    <li>¡Sin compromiso!</li>
+                </ul>
+            </div>
+
+            <div class="agenda-cupos">
+                <div class="cupos-numero" id="cuposDisponibles">0</div>
+                <div class="cupos-texto">Cupos disponibles este mes</div>
+            </div>
+
+            <div class="calendario" id="calendario">
+                <!-- Los días se generarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para agendar -->
+    <div class="modal" id="modalAgenda">
+        <div class="modal-content">
+            <span class="modal-close" onclick="cerrarModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Confirmar Visita</h3>
+            </div>
+            <div class="modal-info" id="modalInfo">
+                <!-- Se llenará dinámicamente -->
+            </div>
+            <form id="agendaForm">
+                <div class="form-group">
+                    <label for="nombreAgenda">Nombre Completo *</label>
+                    <input type="text" id="nombreAgenda" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefonoAgenda">Teléfono / WhatsApp *</label>
+                    <input type="tel" id="telefonoAgenda" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccionAgenda">Dirección *</label>
+                    <input type="text" id="direccionAgenda" required placeholder="Calle, número, comuna">
+                </div>
+                <div class="form-group">
+                    <label for="tipoMuebleAgenda">Tipo de Mueble de Interés</label>
+                    <select id="tipoMuebleAgenda">
+                        <option value="">Selecciona una opción</option>
+                        <option value="cocina">Cocina</option>
+                        <option value="closet">Closet / Ropero</option>
+                        <option value="vanitorio">Vanitorio</option>
+                        <option value="personalizado">Mueble Personalizado</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comentariosAgenda">Comentarios Adicionales</label>
+                    <textarea id="comentariosAgenda" placeholder="Cuéntanos más sobre tu proyecto..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmar Visita</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <div class="section-header">
+            <h2>Contáctanos</h2>
+            <p>Estamos listos para hacer realidad tu proyecto</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 style="color: var(--color-primary); margin-bottom: 1.5rem;">Información de Contacto</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>WhatsApp / Teléfono</strong><br>
+                        <a href="tel:+56912345678">+569 1234 5678</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📷</div>
+                    <div>
+                        <strong>Instagram</strong><br>
+                        <a href="https://instagram.com/bravomueblescolbun" target="_blank">@bravomueblescolbun</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Ubicación</strong><br>
+                        Colbún, Región del Maule, Chile
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <strong>Horario</strong><br>
+                        Lunes a Viernes: 9:00 - 18:00<br>
+                        Sábados: 10:00 - 14:00
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="color: var(--color-primary); margin-bottom: 1.5rem;">Solicita tu Cotización</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Mueble *</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="cocina">Cocina</option>
+                            <option value="closet">Closet / Ropero</option>
+                            <option value="vanitorio">Vanitorio</option>
+                            <option value="personalizado">Mueble Personalizado</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Cuéntanos sobre tu proyecto *</label>
+                        <textarea id="mensaje" name="mensaje" required placeholder="Describe qué mueble necesitas, medidas aproximadas, ubicación, etc."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
+                </form>
+            </div>
+
+            <div class="map-container">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
+                    <strong>Muebles Bravo</strong><br>
+                    Colbún, Región del Maule, Chile<br>
+                    <em>(Mapa interactivo de Google Maps)</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <div class="cta-section">
+        <h2>Convierte tu Idea en el Mueble que tu Hogar Necesita</h2>
+        <p>Dale vida a tus espacios con muebles diseñados especialmente para ti</p>
+        <a href="#contacto" class="btn btn-primary">Solicitar Cotización Ahora</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/bravomueblescolbun" target="_blank" title="Instagram">📷</a>
+            <a href="https://wa.me/56912345678" target="_blank" title="WhatsApp">💬</a>
+        </div>
+        <p>&copy; 2026 Muebles Bravo - Colbún, Región del Maule</p>
+        <p>Fabricación y venta de muebles en melamina a medida</p>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/56912345678?text=Hola%20Muebles%20Bravo,%20me%20interesa%20cotizar%20un%20proyecto" 
+       class="whatsapp-float" 
+       target="_blank" 
+       title="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // ============================================
+        // SISTEMA DE AGENDA DIGITAL
+        // ============================================
+        
+        // Configuración
+        const MAX_VISITAS_POR_DIA = 5;
+        const HORARIOS_DISPONIBLES = [
+            '09:00 - 10:30',
+            '11:00 - 12:30',
+            '14:00 - 15:30',
+            '16:00 - 17:30',
+            '18:00 - 19:30'
+        ];
+
+        // Obtener los próximos 4 sábados
+        function obtenerProximosSabados() {
+            const sabados = [];
+            const hoy = new Date();
+            
+            // Buscar el próximo sábado
+            let fecha = new Date(hoy);
+            let diasHastaSabado = (6 - fecha.getDay() + 7) % 7;
+            if (diasHastaSabado === 0) diasHastaSabado = 7; // Si hoy es sábado, tomar el siguiente
+            fecha.setDate(fecha.getDate() + diasHastaSabado);
+            
+            // Obtener 4 sábados
+            for (let i = 0; i < 4; i++) {
+                sabados.push(new Date(fecha));
+                fecha.setDate(fecha.getDate() + 7);
+            }
+            
+            return sabados;
+        }
+
+        // Formatear fecha
+        function formatearFecha(fecha) {
+            const opciones = { day: 'numeric', month: 'long' };
+            return fecha.toLocaleDateString('es-CL', opciones);
+        }
+
+        // Obtener key para localStorage
+        function getKeyFecha(fecha) {
+            return `agenda_${fecha.toISOString().split('T')[0]}`;
+        }
+
+        // Obtener reservas del día
+        function obtenerReservas(fecha) {
+            const key = getKeyFecha(fecha);
+            const reservas = localStorage.getItem(key);
+            return reservas ? JSON.parse(reservas) : [];
+        }
+
+        // Guardar reserva
+        function guardarReserva(fecha, horario, datos) {
+            const key = getKeyFecha(fecha);
+            const reservas = obtenerReservas(fecha);
+            
+            reservas.push({
+                horario: horario,
+                fecha: fecha.toISOString(),
+                nombre: datos.nombre,
+                telefono: datos.telefono,
+                direccion: datos.direccion,
+                tipoMueble: datos.tipoMueble,
+                comentarios: datos.comentarios,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(key, JSON.stringify(reservas));
+        }
+
+        // Verificar si un horario está ocupado
+        function estaOcupado(fecha, horario) {
+            const reservas = obtenerReservas(fecha);
+            return reservas.some(r => r.horario === horario);
+        }
+
+        // Contar cupos disponibles
+        function contarCuposDisponibles() {
+            const sabados = obtenerProximosSabados();
+            let cuposDisponibles = 0;
+            
+            sabados.forEach(sabado => {
+                const reservas = obtenerReservas(sabado);
+                cuposDisponibles += (MAX_VISITAS_POR_DIA - reservas.length);
+            });
+            
+            return cuposDisponibles;
+        }
+
+        // Generar calendario
+        function generarCalendario() {
+            const calendario = document.getElementById('calendario');
+            const sabados = obtenerProximosSabados();
+            
+            calendario.innerHTML = '';
+            
+            sabados.forEach(sabado => {
+                const reservas = obtenerReservas(sabado);
+                const cuposRestantes = MAX_VISITAS_POR_DIA - reservas.length;
+                const estaCompleto = cuposRestantes === 0;
+                
+                const diaCard = document.createElement('div');
+                diaCard.className = 'dia-card';
+                
+                let horariosHTML = '';
+                HORARIOS_DISPONIBLES.forEach(horario => {
+                    const ocupado = estaOcupado(sabado, horario);
+                    const claseDisponible = ocupado ? 'ocupado' : 'disponible';
+                    const estadoTexto = ocupado ? 'Ocupado' : 'Disponible';
+                    const estadoClase = ocupado ? 'ocupado' : 'disponible';
+                    
+                    horariosHTML += `
+                        <div class="horario-item ${claseDisponible}" 
+                             ${!ocupado ? `onclick="abrirModal('${sabado.toISOString()}', '${horario}')"` : ''}>
+                            <div class="horario-hora">
+                                <span>🕐</span> ${horario}
+                            </div>
+                            <div class="horario-estado ${estadoClase}">${estadoTexto}</div>
+                        </div>
+                    `;
+                });
+                
+                diaCard.innerHTML = `
+                    <div class="dia-header">
+                        <div class="dia-fecha">📅 ${formatearFecha(sabado)}</div>
+                        <div class="${estaCompleto ? 'dia-completo' : 'dia-disponible'}">
+                            ${estaCompleto ? 'Completo' : `${cuposRestantes} cupos`}
+                        </div>
+                    </div>
+                    <div class="horarios-lista">
+                        ${horariosHTML}
+                    </div>
+                `;
+                
+                calendario.appendChild(diaCard);
+            });
+            
+            // Actualizar contador de cupos
+            document.getElementById('cuposDisponibles').textContent = contarCuposDisponibles();
+        }
+
+        // Abrir modal
+        let fechaSeleccionada = null;
+        let horarioSeleccionado = null;
+
+        function abrirModal(fechaISO, horario) {
+            fechaSeleccionada = new Date(fechaISO);
+            horarioSeleccionado = horario;
+            
+            const modalInfo = document.getElementById('modalInfo');
+            modalInfo.innerHTML = `
+                <p><strong>📅 Fecha:</strong> Sábado ${formatearFecha(fechaSeleccionada)}</p>
+                <p><strong>🕐 Horario:</strong> ${horario}</p>
+                <p><strong>📍 Servicio:</strong> Visita a terreno (sin costo)</p>
+            `;
+            
+            document.getElementById('modalAgenda').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar modal
+        function cerrarModal() {
+            document.getElementById('modalAgenda').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('agendaForm').reset();
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('agendaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const datos = {
+                nombre: document.getElementById('nombreAgenda').value,
+                telefono: document.getElementById('telefonoAgenda').value,
+                direccion: document.getElementById('direccionAgenda').value,
+                tipoMueble: document.getElementById('tipoMuebleAgenda').value || 'No especificado',
+                comentarios: document.getElementById('comentariosAgenda').value || 'Ninguno'
+            };
+            
+            // Guardar en localStorage
+            guardarReserva(fechaSeleccionada, horarioSeleccionado, datos);
+            
+            // Crear mensaje para WhatsApp
+            const mensaje = `¡Hola Muebles Bravo! Quiero confirmar mi visita a terreno:
+
+📅 Fecha: Sábado ${formatearFecha(fechaSeleccionada)}
+🕐 Horario: ${horarioSeleccionado}
+
+👤 Nombre: ${datos.nombre}
+📱 Teléfono: ${datos.telefono}
+📍 Dirección: ${datos.direccion}
+🪑 Tipo de mueble: ${datos.tipoMueble}
+💬 Comentarios: ${datos.comentarios}`;
+            
+            const whatsappURL = `https://wa.me/56912345678?text=${encodeURIComponent(mensaje)}`;
+            
+            // Cerrar modal
+            cerrarModal();
+            
+            // Mostrar mensaje de confirmación
+            alert('¡Visita agendada! Te redirigiremos a WhatsApp para confirmar los detalles.');
+            
+            // Abrir WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Regenerar calendario
+            generarCalendario();
+        });
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modalAgenda').addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+
+        // Inicializar calendario al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            generarCalendario();
+        });
+
+        // ============================================
+        // RESTO DEL CÓDIGO ORIGINAL
+        // ============================================
+
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Gallery filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'todos' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const nombre = formData.get('nombre');
+            const telefono = formData.get('telefono');
+            const tipo = formData.get('tipo');
+            const mensaje = formData.get('mensaje');
+
+            // Create WhatsApp message
+            const whatsappMessage = `Hola Muebles Bravo! 
+            
+Mi nombre es: ${nombre}
+Teléfono: ${telefono}
+Tipo de mueble: ${tipo}
+Mensaje: ${mensaje}`;
+
+            const whatsappURL = `https://wa.me/56912345678?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+
+            // Reset form
+            contactForm.reset();
+            alert('¡Gracias! Te redirigiremos a WhatsApp para completar tu solicitud.');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.mueble-card, .servicio-card, .feature-card, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
